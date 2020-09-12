@@ -1,0 +1,12 @@
+function [sigmaxp,tawxpyp,sigmayp]=stresstran(sgx,tawxy,sgy,thetta)
+a=(cos((thetta)*(pi/180)))^2;
+b=(sin((thetta)*(pi/180)))^2;
+c=sin(2*(thetta)*(pi/180));
+d=cos(2*(thetta)*(pi/180));
+A=[a c b;-c/2 d c/2;b -c a];
+k=[sgx;tawxy;sgy];
+C=mtimes(A,k);
+sigmaxp=C(1);
+tawxpyp=C(2);
+sigmayp=C(3);
+end
