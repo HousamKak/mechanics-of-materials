@@ -1,0 +1,14 @@
+function stress_tran_total_info(sgx,tawxy,sgy)
+thetta_max_normal=0.5*atan(2*tawxy/(sgx-sgy))*(180/pi);
+thetta_max_shear=0.5*atan((sgy-sgx)/(2*tawxy))*(180/pi);
+[v1 ,~, v3]=stresstran(sgx,tawxy,sgy,thetta_max_normal);
+[k1 ,k2 ,~]=stresstran(sgx,tawxy,sgy,thetta_max_shear);
+disp('---------------------------------------------------------')
+disp(['thetta_max_shear_stresses = ',num2str(thetta_max_shear)])
+disp(['taw_xy_max = ',num2str(k2)])
+disp(['simga_y and sigma_x are the average value which is = ',num2str(k1)])
+disp('---------------------------------------------------------')
+disp(['thetta_max_normal_stresses = ',num2str(thetta_max_normal)])
+disp(['simga_x_max = ',num2str(v1)])
+disp(['simga_y_max = ',num2str(v3)])
+disp('remember that taw_xy is zero at thetta_max_normal_stresses when normal stresses are maximum')
